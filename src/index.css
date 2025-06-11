@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义滚动条样式 - 莫兰迪风格 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F3F0;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #4A4A4A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9CAF88;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #B8A5C7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8FA5B8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #C7A5B8;
+}
+
+/* 平滑过渡效果 */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* 选中文本的颜色 */
+::selection {
+  background-color: rgba(156, 175, 136, 0.3);
+  color: #4A4A4A;
+}
+
+.dark ::selection {
+  background-color: rgba(184, 165, 199, 0.3);
+  color: #F5F3F0;
+}
+
+/* 焦点状态优化 */
+button:focus,
+a:focus {
+  outline: 2px solid #9CAF88;
+  outline-offset: 2px;
+}
+
+.dark button:focus,
+.dark a:focus {
+  outline-color: #B8A5C7;
+}
+
+/* 护眼模式优化 */
+body {
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 减少动画对敏感用户的影响 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 确保dark模式正确应用 */
+html.dark {
+  color-scheme: dark;
+}
+
+html:not(.dark) {
+  color-scheme: light;
+}
